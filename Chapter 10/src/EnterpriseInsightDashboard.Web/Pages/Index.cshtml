@@ -1,0 +1,93 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<section class="hero-panel">
+    <div>
+        <span class="eyebrow">@Model.Snapshot.ReportingPeriod</span>
+        <h2>Business-Critical KPI Overview</h2>
+        <p>
+            This dashboard combines structured enterprise metrics with an AI-assisted narrative.
+            The sample uses service boundaries, guardrails, fallback behavior, and telemetry metadata
+            so the flow remains close to what a production .NET application would need.
+        </p>
+    </div>
+    <div class="status-card">
+        <span>Risk Level</span>
+        <strong>@Model.Insight.RiskLevel</strong>
+        <small>@Model.Snapshot.Region</small>
+    </div>
+</section>
+
+<section class="kpi-grid" aria-label="KPI cards">
+    @foreach (var kpi in Model.Snapshot.Kpis)
+    {
+        <article class="kpi-card">
+            <span>@kpi.BusinessArea</span>
+            <h3>@kpi.Name</h3>
+            <strong>@kpi.Value @kpi.Unit</strong>
+            <small>Previous: @kpi.PreviousValue @kpi.Unit</small>
+            <div class="trend">Trend: @kpi.Trend</div>
+        </article>
+    }
+</section>
+
+<section class="content-grid">
+    <article class="panel large-panel">
+        <span class="eyebrow">AI-Assisted Output</span>
+        <h2>Executive Summary</h2>
+        <p>@Model.Insight.ExecutiveSummary</p>
+
+        @if (Model.Insight.UsedFallback)
+        {
+            <div class="warning-box">
+                The dashboard is showing a fallback narrative. The metrics are still visible,
+                but the AI response should be reviewed before making business decisions.
+            </div>
+        }
+    </article>
+
+    <article class="panel">
+        <span class="eyebrow">Prompt Metadata</span>
+        <h2>Runtime Control</h2>
+        <dl class="metadata-list">
+            <dt>Prompt Version</dt>
+            <dd>@Model.Insight.PromptVersion</dd>
+            <dt>Provider</dt>
+            <dd>@Model.Insight.Telemetry.Provider</dd>
+            <dt>Duration</dt>
+            <dd>@Model.Insight.Telemetry.DurationMs ms</dd>
+            <dt>Fallback</dt>
+            <dd>@Model.Insight.UsedFallback</dd>
+        </dl>
+    </article>
+</section>
+
+<section class="panel">
+    <span class="eyebrow">KPI Narratives</span>
+    <h2>Prompt-Driven Business Explanation</h2>
+    <div class="narrative-list">
+        @foreach (var item in Model.Insight.Narratives)
+        {
+            <article>
+                <h3>@item.KpiName</h3>
+                <p>@item.Narrative</p>
+                <p><strong>Impact:</strong> @item.Impact</p>
+                <p><strong>Suggested Action:</strong> @item.SuggestedAction</p>
+            </article>
+        }
+    </div>
+</section>
+
+<section class="panel">
+    <span class="eyebrow">Recommended Actions</span>
+    <h2>Next Operational Steps</h2>
+    <ul class="action-list">
+        @foreach (var action in Model.Insight.RecommendedActions)
+        {
+            <li>@action</li>
+        }
+    </ul>
+</section>

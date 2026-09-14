@@ -1,0 +1,6 @@
+@PromptToDotNet.SK.SkillsApi_HostAddress = http://localhost:5136
+
+GET {{PromptToDotNet.SK.SkillsApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

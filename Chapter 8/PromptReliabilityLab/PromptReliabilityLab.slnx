@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="PromptReliabilityLab.AI/PromptReliabilityLab.AI.csproj" />
+  <Project Path="PromptReliabilityLab.Api/PromptReliabilityLab.Api.csproj" />
+  <Project Path="PromptReliabilityLab.Application/PromptReliabilityLab.Application.csproj" />
+  <Project Path="PromptReliabilityLab.Tests/PromptReliabilityLab.Tests.csproj" />
+</Solution>

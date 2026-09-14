@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/PromptReview.Api/PromptReview.Api.csproj" />
+    <Project Path="src/PromptReview.Application/PromptReview.Application.csproj" />
+    <Project Path="src/PromptReview.Contracts/PromptReview.Contracts.csproj" />
+    <Project Path="src/PromptReview.Domain/PromptReview.Domain.csproj" />
+    <Project Path="src/PromptReview.Infrastructure/PromptReview.Infrastructure.csproj" />
+  </Folder>
+</Solution>

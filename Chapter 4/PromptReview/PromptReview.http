@@ -1,0 +1,6 @@
+POST http://localhost:5043/api/prompt-review
+Content-Type: application/json
+
+{
+  "text": "The application has an error when processing the customer request."
+}
